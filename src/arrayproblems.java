@@ -1,6 +1,10 @@
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static java.lang.Math.abs;
 
 public class arrayproblems {
 
@@ -43,11 +47,27 @@ public class arrayproblems {
         }
         return -1;
     }
+    static List<Integer> missingElements(int[] arr) {
+        List<Integer> list = new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            int index=abs(arr[i])-1;
+            if(arr[index]>0){
+                arr[index]=-arr[index];
+            }
+        }
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>0){
+                list.add(i+1);
+            }
+        }
+        return list;
+    }
     static void main() {
-        int[] arr={1,7,3,6,5,6};
+        int[] arr={2,3,3,3,1,5};
 //        System.out.println(removeDuplicates(arr));
 //        System.out.println(findFirstRepeatingElement(arr));
-        System.out.println(findPivotIndex(arr));
+//        System.out.println(findPivotIndex(arr));
+        System.out.println(missingElements(arr));
 
 
     }
